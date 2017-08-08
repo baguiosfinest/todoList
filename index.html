@@ -32,7 +32,7 @@
 
     <header class="header text-center">Todays Task</header>
     <h4 class="clearfix">Remaining Tasks: <span>{{remaining()}}</span> out of <strong>{{todoLists.length}}.</strong>
-    <small class="pull-right"><!--[<a href="" ng-click="archive()">Archive Finished Items</a>]-->[{{ archiveList.length }} items on archive]</small></h4>
+    <small class="pull-right">[<a href="" ng-click="archive()">Archive Finished Items</a>][{{ archiveList.length }} items on archive]</small></h4>
 
     <div class="form-group">
       <select class="form-control col-sm-4" ng-model="sortOrder">
@@ -65,9 +65,9 @@
       <div class="form-group">
         <input type="text" class="form-control form-control-lg" ng-model="todoName" required>
       </div>
-      <input type="submit" class="btn btn-primary">
+      <input type="submit" value="Add Todo" class="btn btn-primary">
       <input type="button" class="btn btn-primary" ng-click="clearStorage()" value="Clear">
-      <span class="btn btn-danger" ng-click="showItems()">Show Objects</span>
+      <!--<span class="btn btn-danger" ng-click="showItems()">Show Objects</span>-->
     </form>
 
   </div>

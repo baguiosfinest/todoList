@@ -59,7 +59,7 @@
     //console.log($scope.todoLists);
 
     $scope.clearStorage = function(){
-      alert('Local Storage Cleared!');
+      alert('Local Storage Cleared! Back to default items.');
       localStorage.clear();
       $window.location.reload();
 
