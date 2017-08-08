@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>Starter Template</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/8773dcaa80.js"></script>
+
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <script src="javascript/app.js"></script>
+  <script src="javascript/filters.js"></script>
+
+</head>
+
+<body ng-cloak>
+
+
+  <div class="container" ng-controller="TodoController">
+
+    <header class="header text-center">Todays Task</header>
+    <h4 class="clearfix">Remaining Tasks: <span>{{remaining()}}</span> out of <strong>{{todoLists.length}}.</strong>
+    <small class="pull-right"><!--[<a href="" ng-click="archive()">Archive Finished Items</a>]-->[{{ archiveList.length }} items on archive]</small></h4>
+
+    <div class="form-group">
+      <select class="form-control col-sm-4" ng-model="sortOrder">
+        <option selected value="name">Name</option>
+        <option value="dateAdded">Date</option>
+      </select>
+    </div>
+
+    <div class="todos clearfix">
+
+      <div class="task" ng-repeat="todo in todoLists | orderBy:sortOrder track by $index " ng-class="{done:todo.done}">
+        <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" ng-model="todo.done" ng-change="update()">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">{{todo.name}}</span>
+          </label>
+        <p class="m-0"><strong>Duration: </strong> {{todo.duration | durations }}</p>
+          <p class="m-0">Date Added: {{todo.dateAdded}}</p>
+        <i class="fa fa-trash-o" aria-hidden="true" ng-click="removeToo(todo)"></i>
+      </div>
+      <!--// end .task -->
+
+    </div>
+    <!--// end .wrapper -->
+
+    <br /><br />
+
+    <h3>Add TASK:</h3>
+    <form name="todoForm" ng-submit="todoForm.$valid && addTodo()" novalidate>
+      <div class="form-group">
+        <input type="text" class="form-control form-control-lg" ng-model="todoName" required>
+      </div>
+      <input type="submit" class="btn btn-primary">
+      <input type="button" class="btn btn-primary" ng-click="clearStorage()" value="Clear">
+      <span class="btn btn-danger" ng-click="showItems()">Show Objects</span>
+    </form>
+
+  </div>
+  <!-- /.container -->
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
